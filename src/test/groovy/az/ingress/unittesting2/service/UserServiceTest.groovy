@@ -14,11 +14,11 @@ class UserServiceTest extends Specification {
     private UserService service;
     private UserMapper mapper;
 
-//    def setup() {
-//        repository = Mock()
-//        mapper = Mock()
-//        service = new UserService(repository, mapper)
-//    }
+    def setup() {
+        repository = Mock()
+        mapper = Mock()
+        service = new UserService(repository, mapper)
+    }
 
     def "TestGetById success case"() {
         given:

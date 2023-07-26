@@ -30,6 +30,12 @@ public class UserController {
         return service.getAll();
     }
 
+    @GetMapping("/{user-id}")
+    @Operation(summary = "get by id", description = "get by id", tags = {"User"})
+    public UserDto getById(@PathVariable("user-id") Long id){
+        return service.getById(id);
+    }
+
     @PostMapping
     @Operation(summary = "add", description = "add", tags = {"User"})
     @ResponseStatus(HttpStatus.CREATED)

@@ -2,10 +2,7 @@ package az.ingress.unittesting2.mapper;
 
 import az.ingress.unittesting2.dao.entity.User;
 import az.ingress.unittesting2.model.UserDto;
-import org.mapstruct.BeanMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.*;
 
 import java.util.List;
 

@@ -30,10 +30,4 @@ public class User {
     @Column(name = "age")
     private Short age;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
 }

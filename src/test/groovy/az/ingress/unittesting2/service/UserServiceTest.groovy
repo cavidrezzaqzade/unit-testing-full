@@ -9,10 +9,10 @@ import io.github.benas.randombeans.api.EnhancedRandom
 import spock.lang.Specification
 
 class UserServiceTest extends Specification {
-    private EnhancedRandom random = EnhancedRandomBuilder.aNewEnhancedRandom();
-    private UserRepository repository;
-    private UserService service;
-    private UserMapper mapper;
+    private EnhancedRandom random = EnhancedRandomBuilder.aNewEnhancedRandom()
+    private UserRepository repository
+    private UserService service
+    private UserMapper mapper
 
     def setup() {
         repository = Mock()

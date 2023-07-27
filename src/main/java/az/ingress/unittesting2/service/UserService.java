@@ -3,6 +3,7 @@ package az.ingress.unittesting2.service;
 import az.ingress.unittesting2.dao.entity.User;
 import az.ingress.unittesting2.dao.repository.UserRepository;
 import az.ingress.unittesting2.exception.ApplicationException;
+import az.ingress.unittesting2.exception.Errors;
 import az.ingress.unittesting2.mapper.UserMapper;
 import az.ingress.unittesting2.model.UserDetails;
 import az.ingress.unittesting2.model.UserDto;
@@ -63,7 +64,7 @@ public class UserService {
     }
 
     private User fetchUserIfExist(Long id){
-        return repository.findById(id).orElseThrow(() -> new RuntimeException("user was not found"));
+        return repository.findById(id).orElseThrow(() -> new ApplicationException(DATA_NOT_FOUND, Map.of("id", id)));
     }
 
 }

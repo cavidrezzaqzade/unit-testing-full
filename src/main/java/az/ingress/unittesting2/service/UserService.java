@@ -3,7 +3,6 @@ package az.ingress.unittesting2.service;
 import az.ingress.unittesting2.dao.entity.User;
 import az.ingress.unittesting2.dao.repository.UserRepository;
 import az.ingress.unittesting2.exception.ApplicationException;
-import az.ingress.unittesting2.exception.Errors;
 import az.ingress.unittesting2.mapper.UserMapper;
 import az.ingress.unittesting2.model.UserDetails;
 import az.ingress.unittesting2.model.UserDto;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 import static az.ingress.unittesting2.exception.Errors.DATA_NOT_FOUND;
-
 
 /**
  * @author caci

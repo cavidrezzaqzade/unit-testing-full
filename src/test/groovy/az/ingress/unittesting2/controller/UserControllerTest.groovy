@@ -6,12 +6,14 @@ import az.ingress.unittesting2.service.UserService
 import io.github.benas.randombeans.EnhancedRandomBuilder
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import spock.lang.Specification
 
+import static org.springframework.http.HttpStatus.CREATED
+import static org.springframework.http.MediaType.APPLICATION_JSON
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import static org.skyscreamer.jsonassert.JSONAssert.assertEquals
 
 class UserControllerTest extends Specification{
@@ -46,7 +48,7 @@ class UserControllerTest extends Specification{
         when:
         def result = mockMvc.perform(
             get(url)
-                .contentType(MediaType.APPLICATION_JSON)
+                .contentType(APPLICATION_JSON)
         ).andReturn()
 
         then:
@@ -56,5 +58,31 @@ class UserControllerTest extends Specification{
         assertEquals(exceptedResponse, result.response.contentAsString, true)
 
     }
+
+    def "TestSaveUser success case" () {
+        given:
+        def url = "/v1/users"
+        def request = new UserDto(1, "Javid", 28.shortValue())
+        def jsonRequest =
+                                    """
+                                        {
+                                            "id" : 1,
+                                            "name" : "Javid",
+                                            "age" : 28
+                                        }
+                                    """
+
+        when:
+        def result = mockMvc.perform(
+            post(url)
+                .contentType(APPLICATION_JSON)
+                .content(jsonRequest))
+            .andReturn()
+
+        then:
+        1 * service.add(request)
+        result.response.status == CREATED.value()
+    }
+
 
 }

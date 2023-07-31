@@ -44,12 +44,14 @@ public class UserController {
     }
 
     @DeleteMapping("/{user-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "delete", description = "delete", tags = {"User"})
     public void delete(@PathVariable("user-id") Long id){
         service.delete(id);
     }
 
     @PutMapping("/{user-id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "update", description = "update", tags = {"User"})
     public UserDto update(@PathVariable("user-id") Long id, @RequestBody @NotNull @Valid UserDto dto){
         return service.update(dto, id);
